@@ -5,13 +5,13 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-var ACCOUNT_SID = "AC274c600e620c77279b970cd1394248b9";
-var AUTH_TOKEN = "ded2baf31a81dd4d80ef97e07051b54f";
-var TWILIO_NUMBER = "+14697897673";
-var USER_NUMBER = "+14694380988";
-var SLACK_WEBHOOK_SECRET = "SRNp7SeFCEA0ZFglUTA6HJKx";
+var ACCOUNT_SID = "Twilio Account SID";
+var AUTH_TOKEN = "Twilio Authentication token";
+var TWILIO_NUMBER = "Twilio Number";
+var USER_NUMBER = "User Number";
+var SLACK_WEBHOOK_SECRET = "Slack Outgoing Webhook token";
 
-var SLACK_TOKEN = "xoxp-185395272242-185322117107-186086144980-85df07f428921e37b653f38265c148ac";
+var SLACK_TOKEN = "Slack token";
 var Slack = require('slack-node');
 var slack = new Slack(SLACK_TOKEN);
 
