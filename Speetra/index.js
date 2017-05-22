@@ -17,15 +17,16 @@ var slack = new Slack(SLACK_TOKEN);
 
 var client = new twilio(ACCOUNT_SID,AUTH_TOKEN);
 
-
+//Function to Send message from User to Slack
 app.post('/twilio', function (req, res) {
 	  
 	console.log(req.body.From);
 	if(req.body.From == USER_NUMBER){
-		
+		// Request Context will have all the necessary message Info
 		var message = req.body.Body;
 		console.log(message)
 
+		//Slack api call to send the message to Slack
 		slack.api('chat.postMessage', {
 			  text: message,
 			  channel:'#general',
@@ -38,13 +39,16 @@ app.post('/twilio', function (req, res) {
 	}
 })
 
+//Function to Send message from Slack to User
 app.post('/slack', function (req, res) {
 	
 	if(req.body.token == SLACK_WEBHOOK_SECRET){
-
+		//Request Context will have all the necessary message info
 		var channelName = req.body.channel_name;
 		var message = req.body.text;
 		var username = req.body.user_name;
+
+		//Twilio api call to send the message to User
 		client.messages.create({
 		    body: username+':'+message.substring(10),
 		    to: USER_NUMBER,  // Text this number
